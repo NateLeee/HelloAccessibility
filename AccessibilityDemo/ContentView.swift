@@ -9,18 +9,32 @@
 import SwiftUI
 
 struct ContentView: View {
+    let pictures = [
+        "ales-krivec-15949",
+        "galina-n-189483",
+        "kevin-horstmann-141705",
+        "nicolas-tissot-335096"
+    ]
+    
+    let labels = [
+        "Black Shelf",
+        "Beautiful Hill",
+        "Warm Clothes",
+        "Cardigan"
+    ]
+    
+    @State private var selectedPicture = Int.random(in: 0...3)
+    
     var body: some View {
-        VStack {
-            ZStack {
-                Color.blue.opacity(0.72)
-                
-                Image(systemName: "sun.dust.fill")
-                    .font(.system(size: 36))
-                    .foregroundColor(.yellow)
-            }
-            .frame(width: 72, height: 72)
-            .clipShape(Circle())
+        Image(pictures[selectedPicture])
+            .resizable()
+            .scaledToFit()
+            .onTapGesture {
+                self.selectedPicture = Int.random(in: 0...3)
         }
+        .accessibility(label: Text(labels[selectedPicture]))
+        .accessibility(addTraits: .isButton)
+        .accessibility(removeTraits: .isImage)
     }
 }
 

@@ -10,7 +10,17 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, World!")
+        VStack {
+            ZStack {
+                Color.blue.opacity(0.72)
+                
+                Image(systemName: "sun.dust.fill")
+                    .font(.system(size: 36))
+                    .foregroundColor(.yellow)
+            }
+            .frame(width: 72, height: 72)
+            .clipShape(Circle())
+        }
     }
 }
 
